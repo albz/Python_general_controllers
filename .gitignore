@@ -1,0 +1,56 @@
+#pre-compiled pythons
+*.pyc
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.suo
+*.u2d
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+[Dd]ebug/
+x64/[Dd]ebug/
+compila_cnaf.debug_gnu
+compila_cnaf.debug_ifort
+compila_cnaf.perf_gnu
+compila_cnaf.perf_gnu_avx
+compila_cnaf.perf_ifort
+ALaDyn
+compila_cineca.debug_gnu
+compila_cineca.debug_xl
+compila_cineca.perf
+compila_fermi.debug_gnu
+compila_fermi.debug_xl
+compila_fermi.perf
+compila_eurora.perf
+compila_galileo.perf
+compila_galileo.gnu
+compila_juqueen.perf
+compila_plx.perf
+compila_cygwin.perf
+*~
+
