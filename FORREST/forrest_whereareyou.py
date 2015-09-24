@@ -126,7 +126,7 @@ for root_dir, sub_dirs, files in os.walk(path):
 		runs.new_sim_status(counter,'dued',root_dir,time,dt,flag)
 		counter += 1
 		
-	if 'datain.inp' in files:
+	if 'architect.nml' in files:
 		time = find_running_time(root_dir)
 		dt   = find_last_dt(root_dir)
 		flag = get_flag(root_dir)
