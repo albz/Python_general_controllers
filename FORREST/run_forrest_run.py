@@ -27,7 +27,7 @@ path = os.getcwd()
 if(prog=='dued'): 
 	input_file_name = 'dued.nml'
 if(prog=='architect'): 
-	input_file_name = 'datain.inp'
+	input_file_name = 'architect.nml'
 
 #--- *** ---# flags
 flags_nottoberun =  ["==started==","==completed==","==suspended==","==suspend==","==failed=="]
