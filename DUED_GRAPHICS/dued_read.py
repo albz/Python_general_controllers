@@ -1,6 +1,6 @@
 #!/usr/bin/python
 ######################################################################
-# Name:         dued_read_frm.py
+# Name:         dued_read.py
 # Author:       A. Marocchino
 # Date:			2013-07-30
 # Purpose:      reads dued binary frm output
@@ -19,7 +19,7 @@ import pylab as pyl
 
 
 # - #
-def read_read(dir_path,nframe):
+def dued_read_frm(dir_path,nframe):
 
 	# - #
 	#dir_path = '/Volumes/Macintosh_HD_2/sims/non_local_electrons/polar_spike_pushing/f_007_00024'
@@ -125,8 +125,29 @@ def read_read(dir_path,nframe):
 	struct.unpack('i', f.read(4)); tetam = struct.unpack('d', f.read(8))[0]; struct.unpack('i', f.read(4))
 	struct.unpack('i', f.read(4)); zsmin = struct.unpack('d', f.read(8))[0]; struct.unpack('i', f.read(4))
 
+
+	#---***---#
+	# if(f.eof()==False):
+	# 	Bbaro = np.zeros((NIP1,NJP1))
+	# 	struct.unpack('i', f.read(4))
+	# 	for i in range(0,NIP1):
+	# 		for j in range(0,NJP1):
+	# 			Bbaro[i,j] = struct.unpack('i', f.read(4))[0]
+	# 	struct.unpack('i', f.read(4))
+
+	# 	B_th = np.zeros((NIP1,NJP1))
+	# 	struct.unpack('i', f.read(4))
+	# 	for i in range(0,NIP1):
+	# 		for j in range(0,NJP1):
+	# 			B_th[i,j] = struct.unpack('i', f.read(4))[0]
+	# 	struct.unpack('i', f.read(4))
+	# else:
+	Bbaro = np.zeros((NIP1,NJP1))
+	B_th = np.zeros((NIP1,NJP1))
+
+
 	#---***---#
 	f.close()
 
 
-	return time, NIP1, NJP1, r, z, rho, te, ti, ur, uz, tr, zs, p, imater, tetam, zsmin
+	return time, NIP1, NJP1, r, z, rho, te, ti, ur, uz, tr, zs, p, imater, tetam, zsmin, Bbaro, B_th
