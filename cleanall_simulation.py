@@ -17,7 +17,7 @@ import os, os.path, sys, shutil, time, string
 path = os.getcwd()
 
 #namelist files
-nml_file = ['dued.nml','dued_1D.nml','dued.nml_1D','dued_2D.nml','dued.nml_2D','datain.inp'];
+nml_file = ['dued.nml','dued_1D.nml','dued.nml_1D','dued_2D.nml','dued.nml_2D','architect.nml'];
 
 #Exclusion List
 Exc_list = ['.nml','nml_1D','nml_2D','.f','.f90','.c','.cpp','.py','.inp'];
