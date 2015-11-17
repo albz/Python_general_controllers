@@ -33,14 +33,13 @@ def coulomb_logarithm(Te,ni,Z):
 
 
 def plasma_frequency_electron(ne):
-	ne = ne/1e6 #from m^-3 to cm^-3
-	return ( 4.*np.pi* ne *electron_charge_cgs**2 / electron_mass_cgs )**(1./2.)
+	return (ne * electron_charge_SI**2 / electron_mass_SI / eps0)
 	
 	
 def plasma_wavenumber_electron(ne):
-	return plasma_frequency_electron(ne/1e6)/c_cgs
+	return plasma_frequency_electron(ne)/c_SI
 
 	
 def plasma_wavelength_electron(ne):
-	return 2.*np.pi/plasma_wavenumber_electron(ne/1e6)
+	return 2.*np.pi/plasma_wavenumber_electron(ne)
 
