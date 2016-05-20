@@ -36,3 +36,5 @@ for root_dir, sub_dirs, files in os.walk(path):
  		shutil.rmtree(os.path.join(root_dir,'out'))
 	if nml_exists > 0 and os.path.exists(os.path.join(root_dir,'dump')) == True:
  		shutil.rmtree(os.path.join(root_dir,'dump'))
+	if nml_exists > 0 and os.path.exists(os.path.join(root_dir,'dumprestart')) == True:
+ 		shutil.rmtree(os.path.join(root_dir,'dumprestart'))
