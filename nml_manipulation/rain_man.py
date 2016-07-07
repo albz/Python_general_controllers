@@ -60,7 +60,7 @@ def nml_substitution(nml,param,value_to_substitute):
 			line   =  nml[n]
 			m      =  re.match(r"(\s*"+re.escape(param)+"\s*=\s*)([^ ,]+)(.*)$",line,re.I)
 			nline  =  line
-		
+
 			if m != None:
 				val = value_to_substitute
 				nval = re.sub(r"[eE]","d","%e" % val) # do this for getting the double precision in the fortran nml assignement
@@ -73,7 +73,7 @@ def nml_substitution(nml,param,value_to_substitute):
 			line   =  nml[n]
 			m      =  re.match(r"(\s*"+re.escape(param)+"\s*=\s*)([^ ,]+)(.*)$",line,re.I)
 			nline  =  line
-		
+
 			if m != None:
 				val = value_to_substitute
 				nval = re.sub(r"[eE]","d","%d" % val) # do this for getting the double precision in the fortran nml assignement
@@ -86,7 +86,7 @@ def nml_substitution(nml,param,value_to_substitute):
 			line   =  nml[n]
 			m      =  re.match(r"(\s*"+re.escape(param)+"\s*=\s*)([^ ,]+)(.*)$",line,re.I)
 			nline  =  line
-		
+
 			if m != None:
 				val = value_to_substitute
 				nline = line[:m.start(2)] + val + ",\n" #+ line[m.end(2):] #+ '\n'
@@ -95,11 +95,29 @@ def nml_substitution(nml,param,value_to_substitute):
 	return nml
 
 
-
+#--- old version: works for sim.out ---#
+#--- the new version works with the file.name from input ---#
 # find in > sim.out
 def find_in_simout(path,string_to_search,strategy):
 	f=[]
 	for line in open(os.path.join(path,'sim.out'),"r"):
+		if string_to_search in line:
+		#if re.match("\s*"+re.escape(string_to_search)+"\s"+"\s*",line): #Exact Matching: much slower
+			for t in line.split():
+				try:
+					f.append(float(t))
+				except ValueError:
+					pass
+	if strategy == 'max':
+		return max(f)
+	if strategy == 'all':
+		return f
+
+#-new version-#
+# find in > file
+def find_in_file(path,file,string_to_search,strategy):
+	f=[]
+	for line in open(os.path.join(path,filename),"r"):
 		if string_to_search in line:
 		#if re.match("\s*"+re.escape(string_to_search)+"\s"+"\s*",line): #Exact Matching: much slower
 			for t in line.split():
@@ -124,7 +142,7 @@ def find_in_nml(path,param):
 		line   =  nml[n]
 		m      =  re.match(r"(\s*"+re.escape(param)+"\s*=\s*)([^ ,]+)(.*)$",line,re.I)
 		nline  =  line
-		
+
 		if m != None:
 			digging_in = line[m.start(2):].lower()
 			digging_in=digging_in.replace(',',' ')
