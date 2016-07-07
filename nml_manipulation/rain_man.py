@@ -115,7 +115,7 @@ def find_in_simout(path,string_to_search,strategy):
 
 #-new version-#
 # find in > file
-def find_in_file(path,file,string_to_search,strategy):
+def find_in_file(path,filename,string_to_search,strategy):
 	f=[]
 	for line in open(os.path.join(path,filename),"r"):
 		if string_to_search in line:
