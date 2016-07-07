@@ -21,19 +21,19 @@ sys.path.append(os.path.join(home_path,'Codes/Python_general_controllers/nml_man
 from rain_man import *
 ### --- ###
 
-# path
+#utilities
+solution=[]
+
+#--- path ---#
 path = os.getcwd()
 
-#--- read namelist ---#
-nml = read_nml(os.path.join(path,'0140'),'architect.nml')
-
-#--- loop ---#
-for current in np.arange(10.,101.,5.):
-
-	nml = nml_substitution(nml,'Bpoloidal%background_current_A(1)',current)
-
- 	path_complete = os.path.join(path,'sys',"%0.4d" % index)
- 	if not os.path.exists(path_complete):
- 		os.makedirs(path_complete)
- 		write_nml(path_complete,nml,'architect.nml')
- 	index = index + 1
+#analyze sim.out --> results
+for root_dir, sub_dirs, files in os.walk(path):
+	for file in files:
+		if file == 'architect.nml':
+			I = find_in_file(root_dir,file,'Bpoloidal%background_current_A(1)','max')
+			print I
+		if file == 'bunch_integrated_quantity_1.dat':
+			M = np.loadtxt(os.path.join(root_dir,'bunch_integrated_quantity_1.dat'))
+			#print M[-1,7]
+	#solution.append([I,M[-1,7]])
