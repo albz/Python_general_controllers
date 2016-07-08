@@ -22,7 +22,7 @@ from rain_man import *
 ### --- ###
 
 #utilities
-solution=[]
+current=[]; sigma=[]
 
 #--- path ---#
 path = os.getcwd()
@@ -31,9 +31,9 @@ path = os.getcwd()
 for root_dir, sub_dirs, files in os.walk(path):
 	for file in files:
 		if file == 'architect.nml':
-			I = find_in_file(root_dir,file,'Bpoloidal%background_current_A(1)','max')
-			print I
+			I.append( find_in_file(root_dir,file,'Bpoloidal%background_current_A(1)','max') )
 		if file == 'bunch_integrated_quantity_1.dat':
-			M = np.loadtxt(os.path.join(root_dir,'bunch_integrated_quantity_1.dat'))
-			#print M[-1,7]
-	#solution.append([I,M[-1,7]])
+			sigma.append( np.loadtxt(os.path.join(root_dir,'bunch_integrated_quantity_1.dat')) )
+print I
+print M
+
