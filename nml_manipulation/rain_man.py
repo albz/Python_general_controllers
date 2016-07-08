@@ -122,6 +122,7 @@ def find_in_file(path,filename,string_to_search,strategy):
 		#if re.match("\s*"+re.escape(string_to_search)+"\s"+"\s*",line): #Exact Matching: much slower
 			for t in line.split():
 				t = re.sub(r"[dD]","e","%s" % t)
+				t = re.sub(r"[,]",' ','%s' % t)
 				try:
 					f.append(float(t))
 				except ValueError:
