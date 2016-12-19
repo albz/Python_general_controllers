@@ -135,10 +135,10 @@ def find_in_file(path,filename,string_to_search,strategy):
 
 
 # find in > dued.nml
-def find_in_nml(path,param):
+def find_in_nml(path,param,name_nml):
 
 	#f   = []
-	nml = read_nml(path,'dued.nml')
+	nml = read_nml(path,name_nml)
 
 	for n in range(0,len(nml)):
 		line   =  nml[n]
