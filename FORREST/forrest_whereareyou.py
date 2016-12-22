@@ -85,7 +85,7 @@ def find_running_time(path,program):
 			return 0.0
 	if program == 'architect':
 		try:
-			return -1.*float(open(os.path.join(path,'sim.out'), 'r').readlines()[-1].split()[7])
+			return -1.*float(open(os.path.join(path,'out','cpu'), 'r').readlines()[-1].split()[1])
 		except:
 			return 0.0
 
