@@ -13,8 +13,8 @@ import os, sys, shutil, time
 
 ### shell inputs
 if(len(sys.argv)<4):
-	print "usage  : %s exec_path nproc prog-name" % sys.argv[0]
-	print "example: %s ~/Codes/ciao_belli.exe 4 dued" % sys.argv[0]
+	print("usage  : %s exec_path nproc prog-name" % sys.argv[0])
+	print("example: %s ~/Codes/ciao_belli.exe 4 dued" % sys.argv[0])
 	sys.exit()
 
 exe=sys.argv[1]
@@ -24,9 +24,9 @@ path = os.getcwd()
 
 
 #--- *** ---#
-if(prog=='dued'): 
+if(prog=='dued'):
 	input_file_name = 'dued.nml'
-if(prog=='architect'): 
+if(prog=='architect'):
 	input_file_name = 'architect.nml'
 
 #--- *** ---# flags
@@ -71,7 +71,7 @@ def total_number_of_simulations():
 		prune_dirs(sub_dirs)
 		if input_file_name in files and len(flags_nottoberun.intersection(set(files))) == 0:
 			i = i + 1
- 	return i
+	return i
 
 
 
@@ -80,12 +80,12 @@ def launch1(jobid):
 	global nrunning
 	pid = os.fork()
 	if pid == 0:
-		print "Jobid ", jobid
+		print("Jobid ", jobid)
 		path_to_run = first_available_simulation()
 		os.chdir(path_to_run)
 #  		command = exe + ' dued.nml '+ '> sim.out'
- 		command = exe + ' ' + input_file_name + ' > sim.out'
- 		os.system(command)   ###RUNNING COMMAND
+		command = exe + ' ' + input_file_name + ' > sim.out'
+		os.system(command)   ###RUNNING COMMAND
 		sys.exit()
 	else:
  		nrunning=nrunning+1
@@ -109,13 +109,13 @@ def delete_file_python_pid():
 
 
 
-#--- *** ---# 
+#--- *** ---#
 #   main    #
 #--- *** ---#
 if __name__ == '__main__':
-	print "Forrest begins to run... runs begin here"
+	print("Forrest begins to run... runs begin here")
 	nrunning=0
-	
+
 	write_python_pid(os.getpid())
 
 	for n in range(0,min(nmaxjobs,total_number_of_simulations())):
@@ -128,17 +128,14 @@ if __name__ == '__main__':
 		n=n+1
 		launch1(n)
 		time.sleep(0.3)
-		
+
 	while(nrunning>0):
 		os.waitpid(-1,0)
 		#print "Still running:",nrunning
 		nrunning=nrunning-1
 
-		
+
 	delete_file_python_pid()
 
 
-	print "End of runs for this task"
-
-
-
+	print("End of runs for this task")
