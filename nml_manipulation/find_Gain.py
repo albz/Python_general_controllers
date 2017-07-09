@@ -34,4 +34,3 @@ for root_dir, sub_dirs, files in os.walk(path):
 	for file in files:
 		if file == 'sim.out':
 			print root_dir,'\t',find_in_simout(root_dir,'GAIN ','max')
-
