@@ -8,9 +8,7 @@
 
 #####################################################################
 # To use it add these line commands to your python.startup file or to your file
-# home_path = os.path.expanduser('~')
-# sys.path.append(os.path.join(home_path,'Codes','Python_general_controllers','python_plot'))
-# plt.style.use('plot_style_ppth.mplstyle')
+# plt.style.use(os.path.join(os.path.expanduser('~'),'Codes','Python_general_controllers','python_plot','plot_style_ppth.mplstyle'))
 #####################################################################
 
 ### LINES
@@ -28,8 +26,8 @@ figure.autolayout : True  # When True, automatically adjust subplot
                            # parameters to make the plot fit the figure
 
 
- ### TICKS
- # see http://matplotlib.org/api/axis_api.html#matplotlib.axis.Tick
+### TICKS
+# see http://matplotlib.org/api/axis_api.html#matplotlib.axis.Tick
 
 xtick.major.size     : 4      # major tick size in points
 xtick.color          : k      # color of the tick labels
