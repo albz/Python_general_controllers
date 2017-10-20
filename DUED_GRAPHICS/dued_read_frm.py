@@ -34,19 +34,19 @@ def dued_read_frm(dir_path,nframe):
 	struct.unpack('i', f.read(4)); NIP1 = struct.unpack('i', f.read(4))[0]; NJP1 = struct.unpack('i', f.read(4))[0]; struct.unpack('i', f.read(4));
 
 	#---***---#
-	z = np.zeros((NIP1,NJP1))
-	struct.unpack('i', f.read(4))
-	for i in range(0,NIP1):
-		for j in range(0,NJP1):
-			z[i,j] = struct.unpack('d', f.read(8))[0]
-	struct.unpack('i', f.read(4))
-
-	#---***---#
 	r = np.zeros((NIP1,NJP1))
 	struct.unpack('i', f.read(4))
 	for i in range(0,NIP1):
 		for j in range(0,NJP1):
 			r[i,j] = struct.unpack('d', f.read(8))[0]
+	struct.unpack('i', f.read(4))
+
+	#---***---#
+	z = np.zeros((NIP1,NJP1))
+	struct.unpack('i', f.read(4))
+	for i in range(0,NIP1):
+		for j in range(0,NJP1):
+			z[i,j] = struct.unpack('d', f.read(8))[0]
 	struct.unpack('i', f.read(4))
 
 	#---***---#
